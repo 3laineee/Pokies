@@ -4,7 +4,13 @@
 import random
 
 #setting up the rows
-slot_machine=[["🍒","🍌","🍎","🍍","🍐"],["🍒","🍌","🍎","🍍","🍐"], ["🍒","🍌","🍎","🍍","🍐"],["🍒","🍌","🍎","🍍","🍐"],["🍒","🍌","🍎","🍍","🍐"],["🍒","🍌","🍎","🍍","🍐"],["🍒","🍌","🍎","🍍","🍐"],["🍒","🍌","🍎","🍍","🍐"],["🍒","🍌","🍎","🍍","🍐"]]
+slot_machine = [
+    ["🍒","🍌","🍎","🍍","🍐"], ["🍒","🍌","🍎","🍍","🍐"], ["🍒","🍌","🍎","🍍","🍐"],
+    ["🍒","🍌","🍎","🍍","🍐"], ["🍒","🍌","🍎","🍍","🍐"], ["🍒","🍌","🍎","🍍","🍐"],
+    ["🍒","🍌","🍎","🍍","🍐"], ["🍒","🍌","🍎","🍍","🍐"], ["🍒","🍌","🍎","🍍","🍐"],
+    ["🍒","🍌","🍎","🍍","🍐"], ["🍒","🍌","🍎","🍍","🍐"], ["🍒","🍌","🍎","🍍","🍐"],
+    ["🍒","🍌","🍎","🍍","🍐"], ["🍒","🍌","🍎","🍍","🍐"], ["🍒","🍌","🍎","🍍","🍐"]
+]
 
 #setting up variables
 loop = 0
@@ -40,13 +46,22 @@ def shuffle():
     random.shuffle(slot_machine[6])
     random.shuffle(slot_machine[7])
     random.shuffle(slot_machine[8])
+    random.shuffle(slot_machine[9])
+    random.shuffle(slot_machine[10])
+    random.shuffle(slot_machine[11])
+    random.shuffle(slot_machine[12])
+    random.shuffle(slot_machine[13])
+    random.shuffle(slot_machine[14])
+
+
+
+
 
 #shows you the symbols:
 def plinko():
-    print(slot_machine[0][0]+slot_machine[1][0]+slot_machine[2][0])
-    print(slot_machine[3][0]+slot_machine[4][0]+slot_machine[5][0])
-    print(slot_machine[6][0]+slot_machine[7][0]+slot_machine[8][0])
-
+    print(slot_machine[0][0]+slot_machine[1][0]+slot_machine[2][0]+slot_machine[3][0]+slot_machine[4][0])
+    print(slot_machine[5][0]+slot_machine[6][0]+slot_machine[7][0]+slot_machine[8][0]+slot_machine[9][0])
+    print(slot_machine[10][0]+slot_machine[11][0]+slot_machine[12][0]+slot_machine[13][0]+slot_machine[14][0])
     
 while again == 'T' and balance > 0:
     shuffle()
@@ -89,6 +104,7 @@ while again == 'T' and balance > 0:
                 again =win_1()
             else:
                 again =lose()
+        
 #when while loop is broken thank user
 print("Thanks for playing, see you next time!")
 
