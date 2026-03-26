@@ -19,14 +19,14 @@ again = 'T'
 bet = 0
 
 
-"""
-changes the balance when you win
-"""
 def win():
     bet = bet*10
     balance += bet
     print("Ding Ding Ding!!!")
     print("Jackpot!! your new balance is {}".format(balance))
+    choice =input("Would you like to play again? (T or F): ")
+    return choice.capitalize()
+
 #lose
 def lose():
     """
@@ -35,7 +35,8 @@ def lose():
     print("You lose!")
     print("your new balance is {}".format(balance))
     #sends the info 'outside' of the function
-    return choice.upper()
+    choice =input("Would you like to play again? (T or F): ")
+    return choice.capitalize()
 
 def number_asker():
     """
@@ -82,74 +83,74 @@ def plinko():
     print(slot_machine[5][0]+slot_machine[6][0]+slot_machine[7][0]+slot_machine[8][0]+slot_machine[9][0])
     print(slot_machine[10][0]+slot_machine[11][0]+slot_machine[12][0]+slot_machine[13][0]+slot_machine[14][0])
     
-    
-#shuffles the plinko
-shuffle()
-#asks user for num and calculates their balance
-a, b = number_asker()
-c = balance_calculator(a, b)
-#checks the value of the amount betting is vaild  and stores into a variable.
-new_balance=value_checker(c)
-print("Your new balance is ${}".format(new_balance))
-#print out plinkos
-plinko()
+while again == 'T':    
+    #shuffles the plinko
+    shuffle()
+    #asks user for num and calculates their balance
+    a, b = number_asker()
+    c = balance_calculator(a, b)
+    #checks the value of the amount betting is vaild  and stores into a variable.
+    new_balance=value_checker(c)
+    print("Your new balance is ${}".format(new_balance))
+    #print out plinkos
+    plinko()
 
-#checks if user won
-if a == 1:
-    #checks the slots for winning or losing
-    if slot_machine[5][0]==slot_machine[6][0]==slot_machine[7][0]==slot_machine[8][0]:
-        #sets again the value of the input of win_1
-        again=win()
-    else:
-        again =lose()
+    #checks if user won
+    if a == 1:
+        #checks the slots for winning or losing
+        if slot_machine[5][0]==slot_machine[6][0]==slot_machine[7][0]==slot_machine[8][0]:
+            #sets again the value of the input of win_1
+            again=win()
+        else:
+            again =lose()
 
-if a  == 2:
-    if slot_machine[5][0]==slot_machine[6][0]==slot_machine[7][0]==slot_machine[8][0]==slot_machine[9][0]:
-        again=win_1()
-    elif slot_machine[0][0]==slot_machine[1][0]==slot_machine[2][0]==slot_machine[3][0]==slot_machine[4][0]:
-        again =win_1()
-    else:
-        again = lose()
- 
-if a == 3:
-    if slot_machine[5][0]==slot_machine[6][0]==slot_machine[7][0]==slot_machine[8][0]==slot_machine[9][0]:
-        again=win()
-    elif slot_machine[0][0]==slot_machine[1][0]==slot_machine[2][0]==slot_machine[3][0]==slot_machine[4][0]:
-        again =win()
-    elif slot_machine[10][0]==slot_machine[11][0]==slot_machine[12][0]==slot_machine[13][0]==slot_machine[14][0]:
-        again =win()
-    else:
-        again = lose()
+    if a  == 2:
+        if slot_machine[5][0]==slot_machine[6][0]==slot_machine[7][0]==slot_machine[8][0]==slot_machine[9][0]:
+            again=win_1()
+        elif slot_machine[0][0]==slot_machine[1][0]==slot_machine[2][0]==slot_machine[3][0]==slot_machine[4][0]:
+            again =win_1()
+        else:
+            again = lose()
+     
+    if a == 3:
+        if slot_machine[5][0]==slot_machine[6][0]==slot_machine[7][0]==slot_machine[8][0]==slot_machine[9][0]:
+            again=win()
+        elif slot_machine[0][0]==slot_machine[1][0]==slot_machine[2][0]==slot_machine[3][0]==slot_machine[4][0]:
+            again =win()
+        elif slot_machine[10][0]==slot_machine[11][0]==slot_machine[12][0]==slot_machine[13][0]==slot_machine[14][0]:
+            again =win()
+        else:
+            again = lose()
 
-if a == 4:
-    if slot_machine[5][0]==slot_machine[6][0]==slot_machine[7][0]==slot_machine[8][0]==slot_machine[9][0]:
-        again=win()
-    elif slot_machine[0][0]==slot_machine[1][0]==slot_machine[2][0]==slot_machine[3][0]==slot_machine[4][0]:
-        again =win()
-    elif slot_machine[10][0]==slot_machine[11][0]==slot_machine[12][0]==slot_machine[13][0]==slot_machine[14][0]:
-        again =win()
-    elif slot_machine[0][0]==slot_machine[4][0]==slot_machine[6][0]==slot_machine[8][0]==slot_machine[12][0]:
-        again=win()
-    else:
-        again = lose()
+    if a == 4:
+        if slot_machine[5][0]==slot_machine[6][0]==slot_machine[7][0]==slot_machine[8][0]==slot_machine[9][0]:
+            again=win()
+        elif slot_machine[0][0]==slot_machine[1][0]==slot_machine[2][0]==slot_machine[3][0]==slot_machine[4][0]:
+            again =win()
+        elif slot_machine[10][0]==slot_machine[11][0]==slot_machine[12][0]==slot_machine[13][0]==slot_machine[14][0]:
+            again =win()
+        elif slot_machine[0][0]==slot_machine[4][0]==slot_machine[6][0]==slot_machine[8][0]==slot_machine[12][0]:
+            again=win()
+        else:
+            again = lose()
 
-if a == 5:
-    if slot_machine[5][0]==slot_machine[6][0]==slot_machine[7][0]==slot_machine[8][0]==slot_machine[9][0]:
-        again=win()
-    elif slot_machine[0][0]==slot_machine[1][0]==slot_machine[2][0]==slot_machine[3][0]==slot_machine[4][0]:
-        again =win()
-    elif slot_machine[10][0]==slot_machine[11][0]==slot_machine[12][0]==slot_machine[13][0]==slot_machine[14][0]:
-        again =win()
-    elif slot_machine[0][0]==slot_machine[4][0]==slot_machine[6][0]==slot_machine[8][0]==slot_machine[12][0]:
-        again=win()
-    elif slot_machine[2][0]==slot_machine[6][0]==slot_machine[8][0]==slot_machine[10][0]==slot_machine[14][0]:
-        again=win()
-    else:
-        again = lose()
+    if a == 5:
+        if slot_machine[5][0]==slot_machine[6][0]==slot_machine[7][0]==slot_machine[8][0]==slot_machine[9][0]:
+            again=win()
+        elif slot_machine[0][0]==slot_machine[1][0]==slot_machine[2][0]==slot_machine[3][0]==slot_machine[4][0]:
+            again =win()
+        elif slot_machine[10][0]==slot_machine[11][0]==slot_machine[12][0]==slot_machine[13][0]==slot_machine[14][0]:
+            again =win()
+        elif slot_machine[0][0]==slot_machine[4][0]==slot_machine[6][0]==slot_machine[8][0]==slot_machine[12][0]:
+            again=win()
+        elif slot_machine[2][0]==slot_machine[6][0]==slot_machine[8][0]==slot_machine[10][0]==slot_machine[14][0]:
+            again=win()
+        else:
+            again = lose()
 
 
-    
-    
+        
+        
 
-    
-    
+        
+        
