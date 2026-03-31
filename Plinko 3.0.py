@@ -20,6 +20,9 @@ bet = 0
 
 
 def win():
+    """
+    changes the ballance when you win
+    """
     bet = bet*10
     balance += bet
     print("Ding Ding Ding!!!")
@@ -43,27 +46,31 @@ def number_asker():
     asks the user for values
     """
     print("Your current balance is ${}.".format(balance))
-    bet=int(input(("How much money are you betting?:$ ")))
-    rows=int(input("How much rows are you betting? (1-5): "))
+    rows=int(input(("How much money are you betting?:$ ")))
+    bet=int(input("How much rows are you betting? (1-5): "))
     return rows, bet
 
-def value_checker(total_value):
+def value_checker(rows,bet):
     """
     checks if the balance can handle the money
     """
-    while  total_value> balance:     #
+    #calculates the total number
+    total_number=rows*bet
+    #loops until total number < balance
+    while  total_number>balance:     #
         print("Thats too expensive bet less or reduce the amount of rows!")
         a, b = number_asker()
-        total_value = balance_calculator(a, b)
-    return total_value
+        total_number = a*b
+        
+    return total_number
 
 
-def balance_calculator(row_value,bet_value):
+def balance_calculator(total_number):
     """
     calculates the current balance
     """
-    total = row_value*bet_value
-    balance_current= balance-total
+    #finds the current balance
+    balance_current= balance-total_number
     return balance_current
 
 
@@ -75,27 +82,18 @@ def shuffle():
     for i in slot_machine:
         random.shuffle(i)
 
-def plinko():
+def pokies():
     """
     print the plinkos
     """
     print(slot_machine[0][0]+slot_machine[1][0]+slot_machine[2][0]+slot_machine[3][0]+slot_machine[4][0])
     print(slot_machine[5][0]+slot_machine[6][0]+slot_machine[7][0]+slot_machine[8][0]+slot_machine[9][0])
     print(slot_machine[10][0]+slot_machine[11][0]+slot_machine[12][0]+slot_machine[13][0]+slot_machine[14][0])
-    
-while again == 'T':    
-    #shuffles the plinko
-    shuffle()
-    #asks user for num and calculates their balance
-    a, b = number_asker()
-    c = balance_calculator(a, b)
-    #checks the value of the amount betting is vaild  and stores into a variable.
-    new_balance=value_checker(c)
-    print("Your new balance is ${}".format(new_balance))
-    #print out plinkos
-    plinko()
 
-    #checks if user won
+def win_checker(a):
+    """
+    checks for any winning rows
+    """
     if a == 1:
         #checks the slots for winning or losing
         if slot_machine[5][0]==slot_machine[6][0]==slot_machine[7][0]==slot_machine[8][0]:
@@ -106,9 +104,9 @@ while again == 'T':
 
     if a  == 2:
         if slot_machine[5][0]==slot_machine[6][0]==slot_machine[7][0]==slot_machine[8][0]==slot_machine[9][0]:
-            again=win_1()
+            again=win()
         elif slot_machine[0][0]==slot_machine[1][0]==slot_machine[2][0]==slot_machine[3][0]==slot_machine[4][0]:
-            again =win_1()
+            again =win()
         else:
             again = lose()
      
@@ -150,7 +148,29 @@ while again == 'T':
 
 
         
-        
+#main routine
+if __name__ == "__main__":
+    while again == 'T':    
+        #shuffles the pokies
+        shuffle()
+        #asks user for num and calculates their balance
+        a, b = number_asker()
+        d =value_checker(a, b)
+        c = balance_calculator(d)
+        #checks the value of the amount betting is vaild  and stores into a variable.
+        balance=c
+        print("Your new balance is ${}".format(c))
+        #print out plinkos
+        pokies()
+        #checks if user won
+        win_checker(a)
+        #asks user to play again
+        again = input("Would you like to play again? T or F: ").upper()
+
+    print("Thank you for playing!") #thank user for playing
+
+            
+            
 
         
         
